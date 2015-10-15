@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app>
+<head lang="pt-br">
+	<meta charset="UTF-8">
+	<title> Dados Pessoais - Paulo Cezar</title>
+	<!-- necessario estar conectado a internet -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	
+	
+</head>
+<body>
+<form>
+<H1>Digite o seu Nome:</H1> <input type ="search" ng-model="busca">
+   <div ng-controller="CtrlDadosPessoais">
+      <ul>
+          <li ng-repeat ="dado in dados | filter:busca">
+          
+            {{dado.nome}} - {{dado.rg}} - {{dado.cpf}}
+          </li>
+       </ul>
+   </div>
+   <br/>
+   
+    <H1>Digite o seu Endereço:</H1> <input type ="search" ng-model="busca2">
+      <div ng-controller="CtrlEnderecoPessoal">
+        <ul>
+          <li ng-repeat ="endereco in enderecos | filter:busca2">
+          
+            {{endereco.lougradouro}} - {{endereco.numero}} - {{endereco.bairro}} - {{endereco.cep}}
+          </li>
+        </ul>
+   </div>
+   
+<script>
+      var CtrlDadosPessoais = function($scope)
+        {
+         <!-- criar  -->
+         $scope.dados = [
+
+         {nome:"Ana", rg:"785469" , cpf:"741.258.963-56"},
+         {nome:"Olavo", rg:"654123" , cpf:"789.456.123.89"},
+         {nome:"Amilton", rg:"987412" , cpf:"847.958.126-74"},
+		 {nome:"Naiara", rg:"457684" , cpf:"145.654.956-89"},
+		 
+         ];
+        }
+</script>
+
+    <script>
+     var CtrlEnderecoPessoal = function($scope)
+      {
+        <!-- criar  -->
+        $scope.enderecos = 
+		[
+        {lougradouro:"Rua Clara Nunes", numero:"5791" , bairro:"4 de Janeiro" , cep: "76841-774"},
+        {lougradouro:"Av Vieira Caula", numero:"1002" , bairro:"Triangulo" , cep: "79541-654"},
+        {lougradouro:"Jorge Teixeira", numero:"8457" , bairro:"Guajará" , cep: "77896-542"},
+		{lougradouro:"Av Costa e Silva", numero:"10000" , bairro:"São Sebastião" , cep: "75902-778"},
+        ];
+      }
+   </script>
+  </form>
+ </body>
+
+</html>
